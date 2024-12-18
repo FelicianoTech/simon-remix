@@ -28,6 +28,7 @@ class GamePageState extends State<GamePage> {
   Future<void> _dialogBuilder(BuildContext context) {
     return showDialog<void>(
       context: context,
+      barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text("Game Over"),
