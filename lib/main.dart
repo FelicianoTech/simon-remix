@@ -1,9 +1,14 @@
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'pages/home.dart';
 import 'pages/game.dart';
 import 'values.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  prefs = await SharedPreferences.getInstance();
+
   runApp(MyApp());
 }
 

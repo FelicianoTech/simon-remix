@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../pages/game.dart';
 
 enum GameState {
@@ -19,3 +20,5 @@ enum SimonColor implements Comparable<SimonColor> {
 }
 
 GlobalKey<GamePageState> gameKey = GlobalKey<GamePageState>();
+
+late SharedPreferences prefs;
