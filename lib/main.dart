@@ -2,6 +2,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'pages/home.dart';
 import 'pages/game.dart';
+import 'pages/about.dart';
 import 'values.dart';
 
 void main() async {
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
       home: HomePage(),
       routes: <String, WidgetBuilder>{
         '/game': (BuildContext context) => GamePage(key: gameKey),
+        '/about': (BuildContext context) => AboutPage(),
       },
     );
   }
