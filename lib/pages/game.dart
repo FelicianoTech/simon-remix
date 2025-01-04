@@ -22,6 +22,7 @@ class GamePageState extends State<GamePage> {
 
   void advanceLevel() {
     level++;
+    prefs.setInt('highscore', level);
     randomSimonButton(1);
     present();
   }
@@ -56,6 +57,10 @@ class GamePageState extends State<GamePage> {
   }
 
   void endGame() {
+    // if we've reached a new highscore, set it
+    int highscore = prefs.getInt('highscore') ?? 0;
+    if (level > highscore) {}
+
     setState(() {
       state = GameState.Ended;
     });
@@ -127,6 +132,11 @@ class GamePageState extends State<GamePage> {
         child: Center(
           child: Column(
             children: <Widget>[
+              ((prefs.getInt('highscore') ?? 0) > 1)
+                  ? Text("Highscore: level ${prefs.getInt('highscore') ?? 0}",
+                      style: TextStyle(fontSize: 18.0))
+                  : const Text(""),
+              SizedBox(height: 30.0),
               (level > 0)
                   ? Text("Level $level", style: TextStyle(fontSize: 30.0))
                   : Text(" ", style: TextStyle(fontSize: 30.0)),
