@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:vibration/vibration.dart';
 import '../values.dart';
 import '../components/simon.dart';
 
@@ -154,8 +155,12 @@ class GamePageState extends State<GamePage> {
     choiceIndex++;
 
     if (simonColor != choices[choiceIndex]) {
+      Vibration.vibrate(duration: 900);
       endGame();
+
       return;
+    } else {
+      Vibration.vibrate(duration: 200);
     }
 
     if (choiceIndex == (choices.length - 1)) {
