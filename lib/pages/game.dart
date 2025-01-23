@@ -22,7 +22,6 @@ class GamePageState extends State<GamePage> {
 
   void advanceLevel() {
     level++;
-    prefs.setInt('highscore', level);
     randomSimonButton(1);
     present();
   }
@@ -59,7 +58,9 @@ class GamePageState extends State<GamePage> {
   void endGame() {
     // if we've reached a new highscore, set it
     int highscore = prefs.getInt('highscore') ?? 0;
-    if (level > highscore) {}
+    if (level > highscore) {
+      prefs.setInt('highscore', level);
+    }
 
     setState(() {
       state = GameState.Ended;
