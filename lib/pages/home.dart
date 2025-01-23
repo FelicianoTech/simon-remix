@@ -26,10 +26,17 @@ class HomePage extends StatelessWidget {
               const SizedBox(height: 20.0),
               ElevatedButton(
                 onPressed: () {
+                  Navigator.pushNamed(context, '/about');
+                },
+                child: const Text("About"),
+              ), // Button
+              const SizedBox(height: 20.0),
+              ElevatedButton(
+                onPressed: () {
                   SystemChannels.platform.invokeMethod('SystemNavigator.pop');
                 },
                 child: const Text("Quit"),
-              ),
+              ), // Button
             ],
           ),
         ), // Center
