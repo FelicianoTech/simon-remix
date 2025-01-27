@@ -1,0 +1,25 @@
+name: simon-remix
+version: '0.3.0'
+summary: "Remember the color patterns to get deep into the game."
+description: |
+  Simon Remix is a twist on a classic memory game called Simon Says or simply, Simon. It brings the classic brain teaser to your mobile phone to play anywhere anytime. Battle it out against Simon, testing how well you can remember color patterns able to advance to the next, harder round. Get it wrong and ooooo it's game over for you.
+
+base: core24
+grade: stable
+confinement: strict
+
+platforms:
+  amd64:
+  arm64:
+
+parts:
+  simon-remix:
+    source: .
+    plugin: flutter
+    flutter-target: lib/main.dart
+
+apps:
+  simon-remix:
+    command: simon-remix
+    extensions:
+      - gnome

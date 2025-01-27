@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Simon Remix
+Comment=Remember the color patterns to get deep into the game.
+Exec=simon-remix
+Icon=${SNAP}/meta/gui/simon-remix.png
+Terminal=false
+Type=Application
+Categories=Game;
