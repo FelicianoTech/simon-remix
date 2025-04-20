@@ -163,15 +163,21 @@ class GamePageState extends State<GamePage> {
   }
 
   void verifyBid(SimonColor simonColor) {
+    bool vibrate = prefs.getBool('haptic') ?? true;
     choiceIndex++;
 
     if (simonColor != choices[choiceIndex]) {
-      Vibration.vibrate(duration: 900);
+      if (vibrate) {
+        Vibration.vibrate(duration: 900);
+      }
+
       endGame();
 
       return;
     } else {
-      Vibration.vibrate(duration: 200);
+      if (vibrate) {
+        Vibration.vibrate(duration: 200);
+      }
     }
 
     if (choiceIndex == (choices.length - 1)) {

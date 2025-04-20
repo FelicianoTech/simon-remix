@@ -3,9 +3,14 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../values.dart' as global;
 
-class SettingsPage extends StatelessWidget {
-  SettingsPage({super.key});
+class SettingsPage extends StatefulWidget {
+  const SettingsPage({super.key});
 
+  @override
+  State<SettingsPage> createState() => _SettingsPageState();
+}
+
+class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +23,15 @@ class SettingsPage extends StatelessWidget {
         child: Center(
           child: Column(
             children: <Widget>[
-              Text("Hi"),
+              SwitchListTile(
+                title: const Text("Haptic Feedback (vibration)"),
+                value: global.prefs.getBool('haptic') ?? true,
+                onChanged: (bool value) {
+                  setState(() {
+                    global.prefs.setBool('haptic', value);
+                  });
+                },
+              ),
             ],
           ),
         ), // Center
