@@ -2,12 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../pages/game.dart';
 
-enum GameState {
-  NotStarted,
-  Presenting,
-  Waiting,
-  Ended,
-}
+enum GameState { NotStarted, Presenting, Waiting, Ended }
 
 enum SimonColor implements Comparable<SimonColor> {
   Red,
@@ -23,4 +18,4 @@ GlobalKey<GamePageState> gameKey = GlobalKey<GamePageState>();
 
 late SharedPreferences prefs;
 late ThemeMode themeMode;
-String version = "v0.4.0";
+String version = "v0.5.0";
