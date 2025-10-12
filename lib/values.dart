@@ -22,4 +22,5 @@ enum SimonColor implements Comparable<SimonColor> {
 GlobalKey<GamePageState> gameKey = GlobalKey<GamePageState>();
 
 late SharedPreferences prefs;
+late ThemeMode themeMode;
 String version = "v0.4.0";

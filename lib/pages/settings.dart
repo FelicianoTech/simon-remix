@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:provider/provider.dart';
 import '../values.dart' as global;
+import '../theme.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -13,6 +15,9 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    int themeInt = global.prefs.getInt('themeMode') ?? 0;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Settings'),
@@ -31,6 +36,35 @@ class _SettingsPageState extends State<SettingsPage> {
                     global.prefs.setBool('haptic', value);
                   });
                 },
+              ),
+              RadioGroup<int>(
+                groupValue: themeInt,
+                onChanged: (int? value) {
+                  int themeMode = 0;
+                  setState(() {
+                    themeInt = value ?? 0;
+                    themeProvider.setThemeMode(themeInt);
+                    global.prefs.setInt('themeMode', themeInt);
+                  });
+                },
+                child: const Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text("Theme mode:"),
+                    RadioListTile<int>(
+                      title: Text("system"),
+                      value: 0,
+                    ),
+                    RadioListTile<int>(
+                      title: Text("light"),
+                      value: 1,
+                    ),
+                    RadioListTile<int>(
+                      title: Text("dark"),
+                      value: 2,
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
