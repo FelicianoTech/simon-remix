@@ -8,6 +8,9 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String themeName =
+        (Theme.of(context).brightness == Brightness.light) ? "light" : "dark";
+
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.all(20.0),
@@ -15,7 +18,9 @@ class HomePage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              const Image(image: AssetImage('assets/img/logo--1000x284.png')),
+              Image(
+                  image: AssetImage(
+                      'assets/img/logo--1000x284--${themeName}.png')),
               const SizedBox(height: 50.0),
               ElevatedButton(
                 onPressed: () {

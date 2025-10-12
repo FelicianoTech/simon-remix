@@ -16,6 +16,9 @@ class AboutPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String themeName =
+        (Theme.of(context).brightness == Brightness.light) ? "light" : "dark";
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('About Simon Remix'),
@@ -26,7 +29,8 @@ class AboutPage extends StatelessWidget {
         child: Center(
           child: Column(
             children: <Widget>[
-              Image.asset('assets/img/logo--1000x284.png', width: 110),
+              Image.asset('assets/img/logo--1000x284--${themeName}.png',
+                  width: 110),
               Text("version: " + global.version),
               const SizedBox(height: 40.0),
               const Text(
